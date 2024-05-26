@@ -1,7 +1,8 @@
 import React from 'react';
-
+// LogoutModal component renders a Bootstrap modal that prompts the user to confirm if they are ready to log out.
 const LogoutModal = () => {
   return (
+    // Main modal container with Bootstrap classes
     <div className="modal fade" id="logoutModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div className="modal-dialog" role="document">
         <div className="modal-content">
@@ -11,7 +12,9 @@ const LogoutModal = () => {
               <span aria-hidden="true">×</span>
             </button>
           </div>
-          <div className="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div className="modal-body">
+            Select "Logout" below if you are ready to end your current session.
+          </div>
           <div className="modal-footer">
             <button className="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
             <a className="btn btn-primary" href="login.html">Logout</a>
@@ -21,5 +24,4 @@ const LogoutModal = () => {
     </div>
   );
 };
-
 export default LogoutModal;

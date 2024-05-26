@@ -1,61 +1,101 @@
-import React from 'react';
-// import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import 'font-awesome/css/font-awesome.min.css';
-
+import './SideBar.css';
+//  Sidebar component renders a collapsible sidebar with navigation links.
 const Sidebar = () => {
+  // State to manage the collapsed state of the sidebar
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  // Function to toggle the sidebar collapsed state
+  const handleToggleSidebar = () => {
+    setIsCollapsed(!isCollapsed);
+  };
   return (
-    <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-      <a className="sidebar-brand d-flex align-items-center justify-content-center" href="/">
-        <div className="sidebar-brand-icon rotate-n-15">
-          <i className="fas fa-laugh-wink"></i>
-        </div>
-        <div className="sidebar-brand-text mx-3">Dashboard</div>
-      </a>
-
-      <hr className="sidebar-divider my-0" />
-
-      <li className="nav-item active">
-        <a className="nav-link" href="/">
-          <i className="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span>
+    <>
+      {/* Sidebar container with conditional collapse class */}
+      <ul className={`navbar-nav bg-gradient-info sidebar sidebar-dark ${isCollapsed ? 'collapse' : ''}`} id="accordionSidebar">
+        <a className="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+          {!isCollapsed && <div className="sidebar-brand-text mx-3">Dashboard</div>}
         </a>
-      </li>
 
-      <hr className="sidebar-divider" />
+        {/* Divider */}
+        <hr className="sidebar-divider my-0" />
 
-      <div className="sidebar-heading">Interface</div>
+        {/* Nav Item - Dashboard */}
+        <li className="nav-item active">
+          <a className="nav-link" href="/">
+            <i className="fa-solid fa-house"></i>
+            {!isCollapsed && <span>Dashboard</span>}
+          </a>
+        </li>
 
-      <li className="nav-item">
-        <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i className="fas fa-fw fa-cog"></i>
-          <span>Components</span>
-        </a>
-        <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div className="bg-white py-2 collapse-inner rounded">
-            <h6 className="collapse-header">Custom Components:</h6>
-            <a className="collapse-item" href="#">Buttons</a>
-            <a className="collapse-item" href="#">Cards</a>
-          </div>
-        </div>
-      </li>
+        {/* Nav Item - Overview */}
+        <li className="nav-item active">
+          <a className="nav-link" href="/overview">
+            <i className="fas fa-fw fa-area-chart"></i>
+            {!isCollapsed && <span>Overview</span>}
+          </a>
+        </li>
 
-      <li className="nav-item">
-        <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-          <i className="fas fa-fw fa-wrench"></i>
-          <span>Utilities</span>
-        </a>
-        <div id="collapseUtilities" className="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div className="bg-white py-2 collapse-inner rounded">
-            <h6 className="collapse-header">Custom Utilities:</h6>
-            <a className="collapse-item" href="#">Colors</a>
-            <a className="collapse-item" href="#">Borders</a>
-            <a className="collapse-item" href="#">Animations</a>
-            <a className="collapse-item" href="#">Other</a>
-          </div>
-        </div>
-      </li>
-    </ul>
+        {/* Nav Item - Reports */}
+        <li className="nav-item active">
+          <a className="nav-link" href="/reports">
+            <i className="fas fa-fw fa-line-chart"></i>
+            {!isCollapsed && <span>Reports</span>}
+          </a>
+        </li>
+
+        {/* Nav Item - Analytics */}
+        <li className="nav-item active">
+          <a className="nav-link" href="/analytics">
+            <i className="fas fa-fw fa-bar-chart"></i>
+            {!isCollapsed && <span>Analytics</span>}
+          </a>
+        </li>
+
+        {/* Nav Item - Charts */}
+        <li className="nav-item active">
+          <a className="nav-link" href="/charts">
+            {!isCollapsed && <span>Charts</span>}
+          </a>
+        </li>
+
+        {/* Nav Item - Bar Chart */}
+        <li className="nav-item active">
+          <a className="nav-link" href="/GraphCharts">
+            <div className='Chart'>
+              <i className="fa-solid fa-chart-simple"></i>
+              {!isCollapsed && <span>Bar Chart</span>}
+            </div>
+          </a>
+        </li>
+
+        {/* Nav Item - Line Chart */}
+        <li className="nav-item active">
+          <a className="nav-link" href="/LineCharts">
+            <div className='Chart'>
+              <i className="fa-solid fa-chart-line"></i>
+              {!isCollapsed && <span>Line Chart</span>}
+            </div>
+          </a>
+        </li>
+
+        {/* Nav Item - Table */}
+        <li className="nav-item active">
+          <a className="nav-link" href="/table">
+            <i className="fas fa-fw fa-table"></i>
+            {!isCollapsed && <span>Table</span>}
+          </a>
+        </li>
+      </ul>
+
+      {/* Toggle button for collapsing/expanding the sidebar */}
+      <button className="toggle-button" onClick={handleToggleSidebar}>
+        <i className={`fas ${isCollapsed ? 'fa-bars' : 'fa-bars'}`}></i>
+      </button>
+
+      {/* Page content wrapper with conditional class based on sidebar state */}
+      <div id="page-content-wrapper" className={isCollapsed ? 'collapsed' : ''}></div>
+    </>
   );
 };
-
 export default Sidebar;

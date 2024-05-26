@@ -1,12 +1,15 @@
 import React from 'react';
 import profileImage from '../img/undraw_profile.svg'; // Import the image file
-
+//  Topbar component renders the top navigation bar with a search form and user profile dropdown.
 const Topbar = () => {
   return (
+    // Top navigation bar container with Bootstrap classes
     <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+      {/* Sidebar toggle button for mobile view */}
       <button id="sidebarToggleTop" className="btn btn-link d-md-none rounded-circle mr-3">
         <i className="fa fa-bars"></i>
       </button>
+      {/* Search form for desktop view */}
       <form className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
         <div className="input-group">
           <input type="text" className="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
@@ -17,6 +20,7 @@ const Topbar = () => {
           </div>
         </div>
       </form>
+      {/* User profile dropdown */}
       <ul className="navbar-nav ml-auto">
         <li className="nav-item dropdown no-arrow">
           <a className="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -47,5 +51,4 @@ const Topbar = () => {
     </nav>
   );
 };
-
 export default Topbar;
